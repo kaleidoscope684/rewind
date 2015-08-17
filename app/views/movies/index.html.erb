@@ -1,25 +1,19 @@
-<h1>Listing movies</h1>
+<div class="page-header">
+  <h1>Movie Listings</h1>
+</div>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Year</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= link_to "Post a new movie", new_movie_path %>
 
 <% @movies.each do |movie| %>
-  <tr>
-    <td><%= movie.title %></td>
-    <td><%= movie.year %></td>
-    <td><%= link_to 'Show', movie %></td>
-    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-    <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<div class="movie">
+  <strong><%= movie.title %></strong>
+  <p><%= movie.year %></p>
+  <div class="meta">
+    <%= link_to "Show", movie %>
+    <span class="admin">
+   | <%= link_to "Edit", edit_movie_path(movie) %> |
+      <%= link_to "Delete", movie, method: :delete, data:{ confirm: "are you sure you want to delete?"} %>
+    </span>
+  </div>
+  </div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Movie', new_movie_path %>
